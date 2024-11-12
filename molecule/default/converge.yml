@@ -1,43 +1,20 @@
 ---
 - name: Converge
   hosts: all
-  gather_facts: no
+  gather_facts: true
+  become: true
+  vars_files:
+    - ../../vars/secrets.yml
+  roles: 
+    - role: rhelbase
+
   tasks:
-    - name: Example
-      become: yes
-      command: uname -a
+    - name: Check uname
+      ansible.builtin.raw: uname -a
+      register: result
       changed_when: false
-      register: uname_results
 
-    - debug:
-        var: uname_results.stdout
-# - name: Fail if molecule group is missing
-#   hosts: localhost
-#   tasks:
-#     - name: Print some info
-#       ansible.builtin.debug:
-#         msg: "{{ groups }}"
-
-#     - name: Assert group existence
-#       ansible.builtin.assert:
-#         that: "'molecule' in groups"
-#         fail_msg: |
-#           molecule group was not found inside inventory groups: {{ groups }}
-
-# - name: Converge
-#   hosts: molecule
-#   gather_facts: false
-#   vars_files:
-#     - ../../vars/secrets.yml
-#   roles: 
-#     - role: rhelbase
-  # tasks:
-  #   - name: Check uname
-  #     ansible.builtin.raw: uname -a
-  #     register: result
-  #     changed_when: false
-
-  #   - name: Print some info
-  #     ansible.builtin.assert:
-  #       that: result.stdout | regex_search("^Linux")
+    - name: Print some info
+      ansible.builtin.assert:
+        that: result.stdout | regex_search("^Linux")
     
