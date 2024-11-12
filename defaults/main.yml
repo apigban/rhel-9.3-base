@@ -1,0 +1,20 @@
+---
+packages:
+  - firewalld
+  - iotop
+  - tmux
+  - qemu-guest-agent
+
+network_connections:
+  - name: eth0
+    type: ethernet
+    ip:
+      gateway4: "{{ network.eth0.gateway }}"
+      dns: "{{ network.eth0.dns }}"
+      dns_search: "{{ network.eth0.dns_search }}"
+
+node_hostname: baseimage-test
+
+tailscale:
+  authkey: "{{ ts.authkey }}"
+# home_subnets: 192.168.2.0/24 # Only use for subnet routers

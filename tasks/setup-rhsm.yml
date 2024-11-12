@@ -1,0 +1,18 @@
+---
+- name: Ensure system is unregistered from rhsm
+  community.general.redhat_subscription:
+    state: absent
+
+- name: Ensure rhsm local data is cleaned
+  command: "subscription-manager clean"    
+
+- name: Register as user with password and auto-subscribe to available content.
+  community.general.redhat_subscription:
+    state: present
+    username: "{{ rhsm.username }}"
+    password: "{{ rhsm.password }}"
+    auto_attach: true
+    release: "{{ rhsm.release }}"
+    
+- name: subscription-manager refresh
+  command: subscription-manager refresh

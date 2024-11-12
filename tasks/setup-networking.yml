@@ -1,0 +1,14 @@
+---
+- name: Set Hostname
+  ansible.builtin.hostname:
+    name: "{{ node_hostname }}"
+
+- name: Configure Network
+  ansible.builtin.include_role:
+    name: fedora.linux_system_roles.network
+
+- name: Install tailscale and connect to Tailnet
+  ansible.builtin.include_role:
+    name: artis3n.tailscale
+  vars:
+    tailscale_authkey: "{{ ts.auth }}"

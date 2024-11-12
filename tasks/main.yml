@@ -1,0 +1,16 @@
+---
+  # - name: Put SELinux in permissive mode, logging actions that would be blocked.
+  #   ansible.posix.selinux:
+  #     policy: targeted
+  #     state: permissive
+
+  # - ansible.builtin.include_tasks: setup-rhsm.yml
+
+  # - ansible.builtin.include_tasks: setup-pkg-repositories.yml
+    
+  - ansible.builtin.include_tasks: setup-networking.yml
+    tags:
+    - molecule-notest
+  - ansible.builtin.include_tasks: setup-storage.yml
+
+  # - ansible.builtin.include_tasks: setup-hardening.yml
