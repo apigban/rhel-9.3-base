@@ -1,7 +1,7 @@
 ---
 rhsm:
-  username: "{{ redhat.username }}"
-  password: "{{ redhat.password }}"
+  username: "{{ redhat_secrets.username }}"
+  password: "{{ redhat_secrets.password }}"
   release: "9.4"
 
 network:

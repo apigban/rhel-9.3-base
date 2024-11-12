@@ -14,12 +14,12 @@ driver:
     ssh_user: ${proxmox_ssh_user}
     ssh_port: ${proxmox_ssh_port}
     ssh_identity_file: ${proxmox_ssh_identity_file}
-    timeout: ${proxmox_timeout}
+    timeout: 300
     template_name: ${proxmox_template_name}
 
 platforms:
   - name: molecule-rhel9.3
-    newid: 10000
+    newid: 9999
     ciuser: ${proxmox_ciuser}
     cipassword: ${proxmox_cipassword}
     ipconfig:
@@ -36,5 +36,6 @@ provisioner:
   connection_options:
     ansible_ssh_user: ${proxmox_ssh_user}
     ansible_ssh_common_args: -o IdentitiesOnly=no
+    ansible_become_pass: 
   lint: 
     name: "ansible-lint"
