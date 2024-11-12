@@ -15,3 +15,21 @@ network:
     dns_search:
       - apigban.com
       - home.apigban.com
+
+proxmox:
+  api:
+    host: "192.168.2.253"
+    port: 8006
+    user: "{{ proxmox_secrets.api.user }}"
+    token_id: "{{ proxmox_secrets.api.token_id }}"
+    token_secret: "{{ proxmox_secrets.api.token_secret }}"
+  node_name: proxmox
+  ssh:
+    user: "{{ proxmox_secrets.ssh.user }}"
+    port: 22
+    ssh_identity_file: "{{ proxmox_secrets.ssh.ssh_identity_file }}"
+  template_name: "{{ proxmox_secrets.template_name }}"
+  set_hostname: "{{ proxmox_secrets.set_hostname }}"
+  ci:
+    user: "{{ proxmox_secrets.ci.user }}"
+    password: "{{ proxmox_secrets.ci.password }}"
