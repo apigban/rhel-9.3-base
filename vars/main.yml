@@ -33,3 +33,20 @@ proxmox:
   ci:
     user: "{{ proxmox_secrets.ci.user }}"
     password: "{{ proxmox_secrets.ci.password }}"
+
+container:
+  user: 
+    name: contsvc
+    uid: 740800014
+    gid: 740800014
+  restart_policy: "on-failure" 
+  storage:
+    path:
+      home: "/home/contsvc"
+      container_volumes: "/home/contsvc/.local/share/containers/storage/volumes"
+      container_workdir: "/home/contsvc/.local/share/containers"
+      container_config: "/home/contsvc/.config/containers"
+      systemd_container: "/home/contsvc/.config/systemd/user"
+
+ipa:
+  admin_password: "{{ ipa.admin_password }}"
