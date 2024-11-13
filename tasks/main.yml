@@ -4,12 +4,14 @@
   #     policy: targeted
   #     state: permissive
 
-  # - ansible.builtin.include_tasks: setup-rhsm.yml
+  - ansible.builtin.include_tasks: setup-rhsm.yml
 
-  # - ansible.builtin.include_tasks: setup-pkg-repositories.yml
+  - ansible.builtin.include_tasks: setup-pkg-repositories.yml
     
   - ansible.builtin.include_tasks: setup-networking.yml
 
-  # - ansible.builtin.include_tasks: setup-storage.yml
+  - ansible.builtin.include_tasks: join-domain.yml
+
+  - ansible.builtin.include_tasks: setup-storage.yml
 
   # - ansible.builtin.include_tasks: setup-hardening.yml

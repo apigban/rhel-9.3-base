@@ -4,6 +4,8 @@ packages:
   - iotop
   - tmux
   - qemu-guest-agent
+  - vim
+  - container-tools
 
 network_connections:
   - name: eth0

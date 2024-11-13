@@ -1,0 +1,47 @@
+---
+  - name: Initialize podman
+    ansible.builtin.command: podman info
+    become_user: contsvc
+
+  - name: Create container storage config directory
+    ansible.builtin.file:
+      path: "{{ container.storage.path.container_config }}"
+      state: directory
+      owner: "{{ container.user.uid }}"
+      group: "{{ container.user.gid }}"
+
+  - name: Ensure that the container storage config file is set
+    ansible.builtin.template:
+      src: templates/container-storage-config.yaml.j2
+      dest: "{{ container.storage.path.container_config }}/storage.conf"
+      owner: "{{ container.user.uid }}"
+      group: "{{ container.user.gid }}"
+      force: true
+      backup: true
+
+  - name: Create a new xfs partition
+    community.general.parted:
+      device: /dev/vda
+      number: 1
+      state: present
+      fs_type: xfs
+
+  - name: Create a xfs filesystem on /dev/vda1
+    community.general.filesystem:
+      fstype: xfs
+      dev: /dev/vda1
+
+  - name: Mount data disk device to container_data mountpoint
+    ansible.posix.mount:
+      path: "{{ container.storage.path.container_workdir }}"
+      src: /dev/vda1
+      fstype: xfs
+      state: mounted
+      opts: "defaults"
+
+  - name: Set correct permissions for container directory
+    ansible.builtin.file:
+      path: "{{ container.storage.path.container_workdir }}"
+      state: directory
+      owner: "{{ container.user.uid }}"
+      group: "{{ container.user.gid }}"
