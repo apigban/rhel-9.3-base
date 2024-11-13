@@ -1,0 +1,15 @@
+---
+- name: Install ipaclient
+  ansible.builtin.include_role:
+    name: freeipa.ansible_freeipa.ipaclient
+  vars:
+    ipaserver_domain: "home.apigban.com"
+    ipaserver_realm: "HOME.APIGBAN.COM"
+    ipaclient_mkhomedir: true
+    ipaclient_force_join: true
+    ipaclient_no_sudo: false
+    ipaclient_subid: true
+    ipaserver_install_packages: true
+    ipaadmin_principal: admin
+    ipaadmin_password: "{{ proxmox_secrets.ci.password }}"
+    ipadm_password: "{{ proxmox_secrets.ci.password }}"
