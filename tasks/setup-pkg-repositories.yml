@@ -25,5 +25,3 @@
     reboot_timeout: 300
     pre_reboot_delay: 10
   when: reboot_required.rc == 1
-  tags:
-  - molecule-notest
