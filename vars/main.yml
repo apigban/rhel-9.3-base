@@ -49,7 +49,7 @@ container:
       systemd_container: "/home/contsvc/.config/systemd/user"
 
 ipa:
-  admin_password: "{{ ipa.admin_password }}"
+  admin_password: "{{ ipa_admin_password }}"
 
 # devsec.hardening.os_hardening
 os_selinux_enabled: true
