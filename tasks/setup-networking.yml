@@ -1,7 +1,7 @@
 ---
 - name: Set Hostname
   ansible.builtin.hostname:
-    name: "{{ node_hostname }}"
+    name: "{{ node_hostname }}.home.apigban.com"
 
 - name: Configure Network
   ansible.builtin.include_role:

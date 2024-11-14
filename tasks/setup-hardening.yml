@@ -1,0 +1,13 @@
+---
+# - name: Ensure firewalld is started and enabled
+#   ansible.builtin.systemd_service:
+#     state: started
+#     enabled: true
+#     name: firewalld
+
+#OS
+- name: Ensure OS hardening is performed
+  ansible.builtin.include_role: 
+    name: devsec.hardening.os_hardening
+   
+# SSH

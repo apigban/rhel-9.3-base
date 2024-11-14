@@ -50,3 +50,10 @@ container:
 
 ipa:
   admin_password: "{{ ipa.admin_password }}"
+
+# devsec.hardening.os_hardening
+os_selinux_enabled: true
+os_selinux_policy: targeted
+os_selinux_state: permissive
+sysctl_overwrite:
+  net.ipv4.ip_forward: 1
