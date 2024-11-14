@@ -11,5 +11,5 @@
     ipaclient_subid: true
     ipaserver_install_packages: true
     ipaadmin_principal: admin
-    ipaadmin_password: "{{ proxmox_secrets.ci.password }}"
-    ipadm_password: "{{ proxmox_secrets.ci.password }}"
+    ipaadmin_password: "{{ ipa.admin_password }}"
+    ipadm_password: "{{ ipa.admin_password }}"
