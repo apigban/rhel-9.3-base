@@ -6,6 +6,7 @@ packages:
   - qemu-guest-agent
   - vim
   - container-tools
+  - git
 
 network_connections:
   - name: eth0
