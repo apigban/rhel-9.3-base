@@ -1,11 +1,13 @@
 ---
   - ansible.builtin.include_tasks: setup-rhsm.yml
+    when: ansible_distribution == 'RedHat'  
 
   - ansible.builtin.include_tasks: setup-pkg-repositories.yml
     
   - ansible.builtin.include_tasks: setup-networking.yml
 
   - ansible.builtin.include_tasks: join-domain.yml
+    when: ansible_distribution == 'RedHat'
 
   - ansible.builtin.include_tasks: setup-storage.yml
 
