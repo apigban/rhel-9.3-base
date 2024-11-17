@@ -43,10 +43,10 @@ container:
   storage:
     path:
       home: "/home/{{ 'contsvc' if ansible_distribution == 'RedHat' else 'ansible' }}"
-      container_volumes: "/home/contsvc/.local/share/containers/storage/volumes"
-      container_workdir: "/home/contsvc/.local/share/containers"
-      container_config: "/home/contsvc/.config/containers"
-      systemd_container: "/home/contsvc/.config/systemd/user"
+      container_volumes: "/home/{{ 'contsvc' if ansible_distribution == 'RedHat' else 'ansible' }}/.local/share/containers/storage/volumes"
+      container_workdir: "/home/{{ 'contsvc' if ansible_distribution == 'RedHat' else 'ansible' }}/.local/share/containers"
+      container_config: "/home/{{ 'contsvc' if ansible_distribution == 'RedHat' else 'ansible' }}/.config/containers"
+      systemd_container: "/home/{{ 'contsvc' if ansible_distribution == 'RedHat' else 'ansible' }}/.config/systemd/user"
 
 ipa:
   admin_password: "{{ ipa_admin_password }}"
