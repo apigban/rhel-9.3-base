@@ -42,7 +42,7 @@ container:
   restart_policy: "on-failure" 
   storage:
     path:
-      home: "/home/contsvc"
+      home: "/home/{{ 'contsvc' if ansible_distribution == 'RedHat' else 'ansible' }}"
       container_volumes: "/home/contsvc/.local/share/containers/storage/volumes"
       container_workdir: "/home/contsvc/.local/share/containers"
       container_config: "/home/contsvc/.config/containers"
