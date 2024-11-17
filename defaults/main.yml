@@ -9,12 +9,8 @@ packages:
   - git
 
 network_connections:
-  - name: eth0
+  - name: ens18
     type: ethernet
-    ip:
-      gateway4: "{{ network.eth0.gateway }}"
-      dns: "{{ network.eth0.dns }}"
-      dns_search: "{{ network.eth0.dns_search }}"
 
 node_hostname: baseimage-test
 
