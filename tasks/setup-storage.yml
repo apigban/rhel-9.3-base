@@ -1,7 +1,7 @@
 ---
   - name: Initialize podman
     ansible.builtin.command: podman info
-    become_user: contsvc
+    become_user: "{{ container.user.name }}"
 
   - name: Create container storage config directory
     ansible.builtin.file:
