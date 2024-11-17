@@ -36,9 +36,9 @@ proxmox:
 
 container:
   user: 
-    name: contsvc
-    uid: 740800014
-    gid: 740800014
+    name: "{{ 'contsvc' if ansible_distribution == 'RedHat' else 'ansible' }}"
+    uid: "{{ '740800014' if ansible_distribution == 'RedHat' else '5000' }}"
+    gid: "{{ '740800014' if ansible_distribution == 'RedHat' else '5000' }}"
   restart_policy: "on-failure" 
   storage:
     path:
