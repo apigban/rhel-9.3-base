@@ -8,7 +8,7 @@ packages:
   - container-tools
   - git
 
-network_connections:
+network:
   - name: ens18
     type: ethernet
 
