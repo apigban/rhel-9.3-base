@@ -15,5 +15,6 @@ network:
 node_hostname: baseimage-test
 
 tailscale:
+  enabled: true
   authkey: "{{ ts_secrets.authkey }}"
 # home_subnets: 192.168.2.0/24 # Only use for subnet routers

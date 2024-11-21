@@ -2,6 +2,7 @@
   - name: Initialize podman
     ansible.builtin.command: podman info
     become_user: "{{ container.user.name }}"
+    ignore_errors: true
 
   - name: Create container storage config directory
     ansible.builtin.file:

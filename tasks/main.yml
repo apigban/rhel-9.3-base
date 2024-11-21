@@ -7,7 +7,7 @@
   - ansible.builtin.include_tasks: setup-networking.yml
 
   - ansible.builtin.include_tasks: join-domain.yml
-    when: ansible_distribution == 'RedHat'
+    when: join_domain.enabled | bool
 
   - ansible.builtin.include_tasks: setup-storage.yml
 
