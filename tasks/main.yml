@@ -12,3 +12,7 @@
   - ansible.builtin.include_tasks: setup-storage.yml
 
   - ansible.builtin.include_tasks: setup-hardening.yml
+
+  - name: Ensure lingering enabled
+    become: true
+    ansible.builtin.command: "loginctl enable-linger ansible"
