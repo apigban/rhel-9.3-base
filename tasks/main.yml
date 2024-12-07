@@ -16,3 +16,11 @@
   - name: Ensure lingering enabled
     become: true
     ansible.builtin.command: "loginctl enable-linger ansible"
+
+  - name: Allow the ansible user to run any commands as root
+    community.general.sudoers:
+      name: ansible-as-root
+      state: present
+      user: "{{ container.user.name }}"
+      runas: root
+      commands: ALL
