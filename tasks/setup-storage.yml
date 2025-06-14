@@ -20,22 +20,15 @@
       force: true
       backup: true
 
-  - name: Create a new xfs partition
-    community.general.parted:
-      device: /dev/vda
-      number: 1
-      state: present
-      fs_type: xfs
-
   - name: Create a xfs filesystem on /dev/vda1
     community.general.filesystem:
       fstype: xfs
-      dev: /dev/vda1
+      dev: /dev/vda
 
   - name: Mount data disk device to container_data mountpoint
     ansible.posix.mount:
       path: "{{ container.storage.path.container_workdir }}"
-      src: /dev/vda1
+      src: /dev/vda
       fstype: xfs
       state: mounted
       opts: "defaults"
